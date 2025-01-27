@@ -24,12 +24,11 @@ class CardAdapter(
             val Largura = layoutParams.width
             var porcentagem = 0f
 
-            when( linhas ){
-                1 -> porcentagem = 1f
-                2 -> porcentagem = 0.5f
-                3 -> porcentagem = 0.33f
-                4 -> porcentagem = 0.25f
-                5 -> porcentagem = 0.20f
+            when( dificuldadeSelecionada ){
+                "SUPERFACIL" -> porcentagem = 0.5f
+                "FACIL" -> porcentagem = 0.25f
+                "MEDIA" -> porcentagem = 0.25f
+                "DIFICIL" -> porcentagem = 0.16f
             }
 
             layoutParams.width = (Altura * porcentagem).toInt()

@@ -16,13 +16,14 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.jogomemoriaandroid.databinding.ActivityMainBinding
 import com.example.jogomemoriaandroid.databinding.CardDesingBinding
 
-internal val linhas : Int = 3
+internal var dificuldadeSelecionada = "DIFICIL"
 
 class MainActivity : AppCompatActivity() {
 
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
+    private lateinit var lista : Set<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,8 +36,21 @@ class MainActivity : AppCompatActivity() {
         }
         val rvCards = binding.rvCards
 
-        val lista = listOf("Android","Windows", "IOS","","","","")
+        /*val lista = listOf(
+            "Android",
+            "Windows",
+            "IOS",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        )*/
+        val card = Card()
+        val lista = card.embaralhar(dificuldadeSelecionada).toList()
+
         rvCards.adapter = CardAdapter( lista )
-        rvCards.layoutManager = StaggeredGridLayoutManager(linhas, RecyclerView.VERTICAL)
+        rvCards.layoutManager = StaggeredGridLayoutManager(6, RecyclerView.VERTICAL)
     }
 }
